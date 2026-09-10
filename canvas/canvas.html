@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="600"
+      height="600"
+      style="border: 1px solid black"
+    ></canvas>
+
+    <!-- practice
+    <script>
+      let c = document.getElementById("myCanvas");
+      let ctx = c.getContext("2d");
+
+      //pravokutnik
+      ctx.beginPath();
+      ctx.rect(10, 10, 400, 400);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+
+      //krug
+      ctx.beginPath();
+      ctx.arc(200, 300, 100, 0, 2 * Math.PI);
+      ctx.strokeStyle = "blue";
+      ctx.stroke();
+
+      //trokut
+      ctx.beginPath();
+      ctx.moveTo(100, 200);
+      ctx.lineTo(200, 300);
+      ctx.lineTo(50, 300);
+      ctx.lineTo(100, 200);
+      ctx.stroke();
+    </script> -->
+
+    <!-- house -->
+    <script>
+      let c = document.getElementById("myCanvas");
+      let ctx = c.getContext("2d");
+
+      ctx.beginPath();
+      ctx.rect(50, 250, 300, 200);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.rect(75, 350, 50, 100);
+      ctx.fillStyle = "lightblue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.rect(200, 350, 75, 50);
+      ctx.fillStyle = "lightblue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(50, 250);
+      ctx.lineTo(200, 150);
+      ctx.lineTo(350, 250);
+      ctx.lineTo(50, 250);
+      ctx.fillStyle = "red";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.rect(425, 250, 25, 200);
+      ctx.fillStyle = "brown";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(438, 250, 50, 0, 2 * Math.PI);
+      ctx.fillStyle = "green";
+      ctx.fill();
+    </script>
+  </body>
+</html>
