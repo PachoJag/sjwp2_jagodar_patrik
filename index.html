@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Workbench — Project Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <p class="kicker">4.e</p>
+      <h1>Patrik Jagodar</h1>
+    </header>
+
+    <main>
+      <section class="entries" aria-labelledby="entries-heading">
+        <div class="entries-head">
+          <h2 id="entries-heading">Zadaće</h2>
+        </div>
+
+        <!--
+      To log a new project: copy one <article class="card"> block,
+      update the entry number, title, note, date and status class
+      (status-shipped / status-building / status-idea), and give the
+      "Open notes" link a real destination.
+    -->
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-top">
+              <span class="entry-no">001</span>
+              <span class="status status-shipped">U tijeku</span>
+            </div>
+            <h3>Zadaća 001</h3>
+            <p>Opis zadaće 001.</p>
+            <div class="card-foot">
+              <span class="date">Datum</span>
+              <a href="#" class="open-link">Open notes</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="entry-no">002</span>
+              <span class="status status-building">Nije započeto</span>
+            </div>
+            <h3>Zadaća 002</h3>
+            <p>Opis zadaće 002.</p>
+            <div class="card-foot">
+              <span class="date">Datum</span>
+              <a href="#" class="open-link">Open notes</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="entry-no">003</span>
+              <span class="status status-building">Nije započeto</span>
+            </div>
+            <h3>Zadaća 003</h3>
+            <p>Opis zadaće 003.</p>
+            <div class="card-foot">
+              <span class="date">Datum</span>
+              <a href="#" class="open-link">Open notes</a>
+            </div>
+          </article>
+
+          <article class="card card-blank">
+            <div class="card-top">
+              <span class="entry-no">004</span>
+            </div>
+            <h3>Zadaća 004</h3>
+            <p>
+              Nothing logged yet. When the next project starts, its first line
+              goes here.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <p>Written and kept by <strong>Patrik Jagodar</strong>.</p>
+      <ul class="links">
+        <li>
+          <a href="mailto:patrikjagodar2@gmail.com">patrikjagodar2@gmail.com</a>
+        </li>
+        <li>
+          <a href="https://github.com/PachoJag/sjwp2_jagodar_patrik">GitHub</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>
