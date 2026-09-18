@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18.09.2026. HTML SVG - zadatci</title>
+    <style>
+                  .gingerbread {
+                    fill: #cf8436;
+                  }
+
+                  .eye,
+                  .button {
+                    fill: #000;
+                  }
+
+                  .mouth {
+                    fill: none;
+                    stroke: white;
+                    stroke-width: 4;
+                    stroke-linecap: round;
+                  }
+                </style>
+</head>
+<body>
+    <h1>SVG oblici</h1>
+
+    <svg width="600" height="450" style="border: 1px solid black">
+      <!-- 1. Pravokutnik -->
+      <rect
+        x="30"
+        y="30"
+        width="150"
+        height="80"
+        fill="lightblue"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 2. Zaobljeni pravokutnik -->
+      <rect
+        x="210"
+        y="30"
+        width="150"
+        height="80"
+        rx="15"
+        fill="orange"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 3. Krug -->
+      <circle
+        cx="450"
+        cy="70"
+        r="40"
+        fill="yellow"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 4. Elipsa -->
+      <ellipse
+        cx="120"
+        cy="190"
+        rx="80"
+        ry="40"
+        fill="pink"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 5. Linija -->
+      <line x1="250" y1="150" x2="500" y2="220" stroke="red" stroke-width="5" />
+
+      <!-- 6. Trokut -->
+      <polygon
+        points="150,280 70,390 230,390"
+        fill="lightgreen"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 7. Kvadrat / mnogokut -->
+      <polygon
+        points="300,280 400,280 400,380 300,380"
+        fill="lightblue"
+        stroke="black"
+        stroke-width="3"
+      />
+
+      <!-- 8. Polukrug -->
+      <path
+        d="M 450 380 A 50 50 0 0 1 550 380"
+        fill="yellow"
+        stroke="black"
+        stroke-width="3"
+      />
+    </svg>
+
+    <svg width="600" height="600" style="border: 5px solid black" >
+       <rect width="100%" height="100%" fill="lightblue" />
+       <circle cx="470" cy="90" r="60" fill="yellow" />
+       <rect x="0" y="420" width="100%" height="30%" fill="blue"/>
+       <rect x="70" y="400" width="40%" height="10%" fill="maroon"/>
+       <rect x="178" y="160" width="2%" height="40%" fill="black" stroke="maroon" stroke-width="2"/>
+       <polygon points="170,250 90,390 170,390" fill="white"/>
+       <polygon points="200,250 280,390 200,390" fill="white"/>
+       <polygon points="170,210 120,185 170,160" fill="green"/>
+    </svg>
+     <svg width="475" height="425">
+        <rect x="18" y="13" width="400" height="399" rx="5" fill="#f2dac1"/>
+        <path d="M18 302 Q105 275 185 278 Q285 265 418 302 L418 412 L18 412 Z" fill="#f5f3e8"/>
+        <rect x="94" y="305" width="8" height="48" fill="#7d8778" />
+        <polygon points="98,112 58,312 138,312" fill="#337d65" />
+        <rect x="168" y="307" width="5" height="27" fill="#7d8778" />
+        <polygon points="170,189 146,309 194,309" fill="#337d65" />
+        <rect x="296" y="291" width="5" height="22" fill="#7d8778" />
+        <polygon points="298,193 278,293 318,293" fill="#337d65" />
+        <rect x="365" y="301" width="6" height="32" fill="#7d8778" />
+        <polygon points="368,153 338,303 398,303" fill="#337d65" />
+    </svg>
+    <svg width="475" height="425">
+        <circle cx="178.5" cy="243" r="117" fill="#CE485C"/>
+        <rect x="149" y="99" width="59" height="34" fill="#F7945B"/>
+        <circle cx="178.5" cy="82" r="20.5" fill="none" stroke="#F7945B" stroke-width="4"/>
+    </svg>
+    <svg width="475" height="425">
+                  <circle class="gingerbread" cx="130" cy="82" r="55" />
+                  <path class="gingerbread" d="M 94 125 C 82 139, 70 148, 57 148 L 54 148 C 37 148, 24 160, 24 176 C 24 193, 37 207, 54 207 L 78 207 L 53 285 C 48 300, 56 317, 71 323 C 87 329, 103 321, 109 306 L 129 253 L 150 306 C 156 321, 172 329, 188 323 C 203 317, 211 300, 206 285 L 181 207 L 205 207 C 222 207, 235 193, 235 176 C 235 160, 222 148, 205 148 L 202 148 C 189 148, 178 139, 166 125 Z"/>
+                  <circle class="eye" cx="107" cy="73" r="5.5" />
+                  <circle class="eye" cx="151" cy="73" r="5.5" />
+                  <rect class="mouth" x="111" y="101" width="37" height="10" rx="4"/>
+                  <circle class="button" cx="130" cy="164" r="9"/>
+                  <circle class="button" cx="130" cy="200" r="9"/>
+    </svg>
+
+</body>
+</html>
