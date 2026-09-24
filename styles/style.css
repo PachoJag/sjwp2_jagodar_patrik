@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aqua;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  /* justify-content: space-around; */
+}
+li {
+  text-align: center;
+  margin-left: 175px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  border-radius: 3px;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid black;
+}
