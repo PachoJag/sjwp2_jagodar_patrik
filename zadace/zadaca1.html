@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/zadaca1.css">
+    <title>Skriptni jezici</title>
+  </head>
+  <body>
+    <ul id="nav">
+      <li>Početna</li>
+      <li>O nama</li>
+      <li>Kontakt</li>
+    </ul>
+    
+    <h1>HTML, CSS, Canvas i SVG</h1>
+
+    <p>
+      <em>Canvas</em> je HTML5 element koji, pomoću JavaScript-a, omogućava
+      dinamičko iscrtavanje različitih oblika, dodavanje slika, kreiranje
+      animacija na web stranici i sl.
+    </p>
+    <p>
+      Na platnu (canvas-u) to ne radimo korištenjem novog jezika (kao što je to
+      slučaj kod SVG) ili korištenjem Flasha. Najčešće uporabe platna su:
+    </p>
+    <ul>
+      <li>crtanje grafova</li>
+      <li>animiranje, igre i</li>
+      <li>kompozicija slike.</li>
+    </ul>
+
+    <hr />
+
+    <p>
+      <strong>SVG</strong> (Scalable Vector Graphics) grafika ne gubi kvalitetu
+      prilikom zumiranja ili resize-a.
+    </p>
+    <p>
+      Svi crteži mogu biti interaktivni i dinamički. Svaki element i atribut SVG
+      datoteke može biti animiran. Animacije mogu biti definirane i pokrenute
+      interaktivno ili pomoću skripti.
+    </p>
+    <p>SVG integrira druge W3C standarde kao što su DOM, XSL …</p>
+
+    <hr />
+
+    <h3><strong>Usporedba SVG-a i Canvasa</strong></h3>
+    <table border="collapse">
+      <tr>
+        <th><strong>SVG</strong></th>
+        <th><strong>HTMl Canvas</strong></th>
+      </tr>
+      <tr>
+        <td>
+          SVG ima bolju skalabilnost, tako da može iamti bolje slike sa velikom
+          kvalitetom na bilo kojoj rezolucji.
+        </td>
+        <td>
+          Canvas ima lošu skalabilnost. Nije prikaladan za rad s velikim
+          rezolucijama.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          SVG daje bolje performanse sa manjim brojem objekata ili većom
+          površinom.
+        </td>
+        <td>
+          Canvas daje bolje performanse za rad sa manjim površinanma ili većim
+          brojem objekata.
+        </td>
+      </tr>
+      <tr>
+        <td>SVG se može modificirati uz pomoć skripte i CSS-a.</td>
+        <td>Canvas se može modificirati samo uz pomoć skripte.</td>
+      </tr>
+      <tr>
+        <td>SVG je baziran na vektorima i sastavljen je od oblika.</td>
+        <td>Canvas je baziran na pixelima.</td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table border="1" width="700">
+      <tr>
+        <th>Ime</th>
+        <td>Marko</th>
+      </tr>
+      <tr>
+        <th rowspan="2">Telefon</td>
+        <td>555-1234</td>
+      </tr>
+      <tr>
+        <td>555-8745</td>
+      </tr>
+    </table>
+
+    <br>
+
+    <img src="../slike/svgvscanvas.png" alt="Usporedba">
+
+    <br>
+    <h2>Primjer SVG-a i Canvasa</h2>
+    <svg width="500" height="500" style="border: 5px solid black">
+      <rect width="100%" height="100%" fill="skyblue"></rect>
+      <rect x="125" y="175" width="50%" height="12%" fill="yellow"></rect>
+      <rect x="150" y="100" width="40%" height="50%" fill="beige"></rect>
+      <rect x="150" y="100" width="40%" height="10%" fill="blue"></rect>
+      <circle cx="205" cy="200" r="30" fill="white"></circle>
+      <circle cx="205" cy="200" r="20" fill="blue"></circle>
+      <circle cx="295" cy="200" r="30" fill="white"></circle>
+      <circle cx="295" cy="200" r="20" fill="blue"></circle>
+      <polygon points="230,250 270,250 250,220" fill="orange"></polygon>
+      <path d="M 175 275 A 150 300 0 0 0 325 275" fill="pink"></path>
+      <polygon points="175,375 175,425 250,400" fill="blue"></polygon>
+      <polygon points="325,375 325,425 250,400" fill="blue"></polygon>
+      <circle cx="250" cy="400" r="15" fill="yellow"></circle>
+    </svg>
+
+    <canvas
+      id="canvas"
+      width=500
+      height=500
+      style="border: 5px solid black;">
+    </canvas>
+    <script>
+      let c= document.getElementById("canvas");
+      let ctx=c.getContext("2d");
+
+      ctx.beginPath();
+      ctx.rect(100,200,300,75);
+      ctx.fillStyle="yellow";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.rect(150,130,200,230);
+      ctx.fillStyle="beige";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.rect(150,130,200,40);
+      ctx.fillStyle="blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(210, 225, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = "white";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(210, 225, 20, 0, 2 * Math.PI);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(290, 225, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = "white";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(290, 225, 20, 0, 2 * Math.PI);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(225, 275);
+      ctx.lineTo(275, 275);
+      ctx.lineTo(250, 250);
+      ctx.lineTo(225, 275);
+      ctx.fillStyle="orange";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(250, 300, 50, 0, 1 * Math.PI);
+      ctx.fillStyle = "pink";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(175, 375);
+      ctx.lineTo(175, 425);
+      ctx.lineTo(250, 400);
+      ctx.lineTo(175, 375);
+      ctx.fillStyle="blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(325, 375);
+      ctx.lineTo(325, 425);
+      ctx.lineTo(250, 400);
+      ctx.lineTo(325, 375);
+      ctx.fillStyle="blue";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(250, 400, 20, 0, 2 * Math.PI);
+      ctx.fillStyle= "orange";
+      ctx.fill();
+    </script>
+
+    <form action="../zadace/forma.html" method="get">
+      <label for="name">Unesi ime:</label>
+      <br>
+      <input type="text" id="name" placeholder="Ime..." required/>
+      <br>
+      <label for="mail">Unesite mail</label>
+      <br>
+      <input type="email" id="mail" placeholder="Mail..." required>
+      <br>
+      <label for="datum">Odabir datuma:</label>
+      <br>
+      <input id ="datum"type="date">
+      <br>
+      <br>
+      <input type="submit" value="Submit" >
+      <br><br>
+      <input type="reset" value="Reset">
+    </form>
+  </body>
+</html>

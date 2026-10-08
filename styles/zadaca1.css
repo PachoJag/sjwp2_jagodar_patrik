@@ -1,0 +1,36 @@
+body {
+  background-color: #c2f8f7;
+}
+h1 {
+  font-weight: bold;
+  font-size: 2.5em;
+}
+p {
+  margin: 8px;
+  color: rgb(96 96 96);
+}
+img {
+  width: 480px;
+  height: 220px;
+}
+#nav {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+input[type="submit"] {
+  background-color: #c2f8f7;
+  border-radius: 4px;
+}
+input[type="reset"] {
+  background-color: #c2f8f7;
+  border-radius: 4px;
+}
+input {
+  width: 100%;
+  border-radius: 4px;
+}
