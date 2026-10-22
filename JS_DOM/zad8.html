@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .kartica {
+        width: 300px;
+        padding: 20px;
+        border: 1px solid gray;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      .istaknuto {
+        background-color: gold;
+        border-color: darkorange;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="kartica">Ovo je kartica.</div>
+    <button id="gumb">Uključi/isključi isticanje</button>
+
+    <script>
+      const kartica = document.querySelector(".kartica");
+      const gumb = document.getElementById("gumb");
+      gumb.onclick = function () {
+        kartica.classList.toggle("istaknuto");
+      };
+    </script>
+  </body>
+</html>

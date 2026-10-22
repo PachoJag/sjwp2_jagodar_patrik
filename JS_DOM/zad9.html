@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="odlomak">Tekst koji se skriva i pokazuje</p>
+    <button id="gumb">Sakrij/prikaži</button>
+
+    <script>
+      const odlomak = document.getElementById("odlomak");
+      const gumb = document.getElementById("gumb");
+      gumb.onclick = function () {
+        if (odlomak.style.display === "none") {
+          odlomak.style.display = "block";
+        } else {
+          odlomak.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

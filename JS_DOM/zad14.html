@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .kartica {
+        width: 320px;
+        padding: 24px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+      .svijetla {
+        background-color: #ffffff;
+        color: #222222;
+        border: 2px solid #cccccc;
+      }
+      .tamna {
+        background-color: #222222;
+        color: #f5f5f5;
+        border: 2px solid #555555;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card" class="lightcard">
+      <h2>Kartica</h2>
+      <p>Klikni btn za promjenu teme</p>
+    </div>
+    <button id="btn">Promjena teme</button>
+    <script>
+      const kartica = document.getElementById("card");
+      const gumb = document.getElementById("btn");
+
+      gumb.onclick = function () {
+        kartica.classList.toggle("svijetla");
+        kartica.classList.toggle("tamna");
+      };
+    </script>
+  </body>
+</html>

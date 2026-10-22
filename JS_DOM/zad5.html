@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Prikaži poruku</button>
+    <p id="poruka"></p>
+
+    <script>
+      let btn = document.querySelector("button");
+      const msg = document.getElementById("poruka");
+
+      btn.onclick = function () {
+        msg.textContent = "Uspješno ste kliknuli gumb!";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="en">Enable</button>
+    <button id="ds">Disable</button>
+    <button id="tgt">Button</button>
+
+    <script>
+      const ds = document.getElementById("ds");
+      const en = document.getElementById("en");
+      const tgt = document.getElementById("tgt");
+      ds.onclick = function () {
+        tgt.setAttribute("disabled", "");
+      };
+      en.onclick = function () {
+        tgt.removeAttribute("disabled");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zadatak 10</title>
+  </head>
+  <body>
+    <img
+      id="slika"
+      src="../slike/svgvscanvas.png"
+      alt="Originalna slika"
+      width="400"
+      height="300"
+    />
+    <br />
+    <button id="gumb">Promijeni sliku</button>
+    <script>
+      let btn = document.getElementById("gumb");
+      let img = document.querySelector("img");
+
+      btn.onclick = function () {
+        img.setAttribute("alt", "Bliss");
+        img.setAttribute("src", "../slike/bliss.png");
+      };
+    </script>
+  </body>
+</html>
