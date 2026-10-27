@@ -4,6 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <style>
+      body { font-family: Arial, sans-serif; }
+      #profil {
+        width: 320px;
+        padding: 20px;
+        text-align: center;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        background-color: #f4f4f4;
+      }
+      #profil img { border-radius: 50%; }
+      #profil.aktivan {
+        background-color: #e8f4ff;
+        border-color: steelblue;
+      }
+      button { margin: 4px; }
+    </style>
+
   </head>
-  <body></body>
+  <body>
+    <!-- Napravi profil s naslovom, odlomkom, slikom i poveznicom. Dodaj gumbe:
+„Promijeni ime”, „Promijeni opis” i „Promijeni fotografiju”. Svaki gumb mora
+promijeniti odgovarajući DOM sadržaj ili atribut. Dodatno, promijeni stil profila. -->
+    <div id="profil">
+      <h1 id="ime">Ime</h1>
+    <p id="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Earum, nesciunt! Dolorum enim rem quidem officia facere assumenda odio, 
+      nulla incidunt modi similique unde architecto repellendus sint debitis iusto harum ipsa.</p>
+    <img id="image" src="../slike/svgvscanvas.png" alt="canvasvssvg" width="300" height="200">
+    <a id="link" href="https://www.wikipedia.org">Poveznica</a>
+    </div>
+    
+    <button id="btnN">Promijeni ime</button>
+    <button id="btnO">Promijeni opis</button>
+    <button id="btnF">Promijeni foto</button>
+    <script>
+      const profil = document.getElementById("profil");
+      const ime = document.getElementById("ime");
+      const opis = document.getElementById("opis");
+      const fotografija = document.getElementById("image");
+      const poveznica = document.getElementById("link");
+      const gumbIme = document.getElementById("btnN");
+      const gumbOpis = document.getElementById("btnO");
+      const gumbFoto = document.getElementById("btnF");
+
+      gumbIme.onclick = function () {
+        if (ime) {
+          ime.textContent = "Patrik Jagodar";
+          profil.classList.add("aktivan");
+        }
+      };
+
+      gumbOpis.onclick = function () {
+        if (opis) {
+          opis.textContent = "Skriptni jezici i web-programiranje";
+          opis.style.fontStyle = "italic";
+          profil.classList.add("aktivan");
+        }
+      };
+
+      gumbFoto.onclick = function () {
+        if (fotografija) {
+          fotografija.setAttribute("src", "../slike/bliss.png");
+          fotografija.setAttribute("alt", "bliss");
+          profil.classList.add("aktivan");
+        }
+      };
+
+    </script>
+
+
+  </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodatni izazov</title>
+  <style>
+    .kartica {
+      width: 340px;
+      padding: 24px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 2px solid transparent;
+    }
+    .svijetla {
+      background-color: #ffffff;
+      color: #222222;
+      border-color: #cccccc;
+    }
+    .tamna {
+      background-color: #222222;
+      color: #f5f5f5;
+      border-color: #555555;
+    }
+    .istaknuto {
+      border-color: orange;
+      box-shadow: 0 4px 12px rgba(255, 165, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div id="kartica" class="kartica svijetla">
+    <h2 id="naslov"></h2>
+    <p id="tekst"></p>
+  </div>
+  <button id="gumbTema"></button>
+  <button id="gumbIstakni"></button>
+  <script>
+    const kartica = document.getElementById("kartica");
+    const naslov = document.getElementById("naslov");
+    const tekst = document.getElementById("tekst");
+    const gumbTema = document.getElementById("gumbTema");
+    const gumbIstakni = document.getElementById("gumbIstakni");
+
+    // Provjera da svi potrebni elementi postoje
+    function sviPostoje() {
+    return kartica && naslov && tekst && gumbTema && gumbIstakni;
+    }
+
+    // Ažurira naslov, tekst i natpise gumba prema trenutnim klasama
+    function osvjezi() {
+    if (!sviPostoje()) {
+        console.log("Neki element nije pronađen, provjeri ID-jeve.");
+        return;
+    }
+
+    const tamna = kartica.classList.contains("tamna");
+    const istaknuto = kartica.classList.contains("istaknuto");
+
+    if (tamna) {
+        naslov.textContent = "Tamna tema";
+        gumbTema.textContent = "Prebaci na svijetlu temu";
+    } else {
+        naslov.textContent = "Svijetla tema";
+        gumbTema.textContent = "Prebaci na tamnu temu";
+    }
+
+    if (istaknuto) {
+        tekst.textContent = "Kartica je istaknuta.";
+        gumbIstakni.textContent = "Ukloni isticanje";
+    } else {
+        tekst.textContent = "Kartica nije istaknuta.";
+        gumbIstakni.textContent = "Istakni karticu";
+    }
+    }
+
+    gumbTema.onclick = function () {
+    if (!sviPostoje()) {
+        return;
+    }
+    if (kartica.classList.contains("svijetla")) {
+        kartica.classList.remove("svijetla");
+        kartica.classList.add("tamna");
+    } else {
+        kartica.classList.remove("tamna");
+        kartica.classList.add("svijetla");
+    }
+    osvjezi();
+    };
+
+    gumbIstakni.onclick = function () {
+    if (!sviPostoje()) {
+        return;
+    }
+    kartica.classList.toggle("istaknuto");
+    osvjezi();
+    };
+
+    // Početno stanje
+    osvjezi();
+  </script>
+</body>
+</html>
