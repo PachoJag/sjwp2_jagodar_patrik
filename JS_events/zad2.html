@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body
+    {
+        font-family:sans-serif;
+        max-width:640px;
+        margin:30px auto;
+        padding:0 16px
+    }
+    button
+    {
+        padding:6px 14px;
+        margin:3px;
+        cursor:pointer
+    }
+    input,select
+    {
+        padding:6px;
+        margin:3px
+    }
+    .err{color:#c0392b}
+    .ok{color:#27ae60}
+    li{margin:4px 0}</style>
+</head>
+<body>
+    <h1>Reakcija na tipkovnicu</h1>
+    <input id="polje" placeholder="Upiši nešto...">
+    <p id="poruka"></p>
+    <p>Zadnja tipka: <b id="tipka">-</b></p>
+
+    <script>
+        const polje=document.getElementById("polje");
+        const poruka=document.getElementById("poruka");
+        const tipka=document.getElementById("tipka");
+        document.addEventListener("keydown",function(event)
+        {
+            if(document.activeElement !== polje){
+                return; // dodatno: ignoriraj ako fokus nije u polju
+            } 
+            tipka.textContent = event.key;
+            if(event.key === "Enter")
+            {
+                poruka.textContent = "Potvrđeno";
+            }
+            else if(event.key === "Escape")
+            {
+                polje.value = "";
+                poruka.textContent = "";
+            }
+        });
+</script>
+
+</body>
+</html>
