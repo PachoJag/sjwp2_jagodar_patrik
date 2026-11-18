@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="hr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zadatak 10 – Narudžbe</title><style>body{font-family:sans-serif;max-width:640px;margin:30px auto;padding:0 16px}button{padding:6px 14px;margin:3px;cursor:pointer}input,select{padding:6px;margin:3px}.err{color:#c0392b}.ok{color:#27ae60}li{margin:4px 0}</style></head><body><h1>Mini sustav narudžbi</h1>
+<h3>Dostupni proizvodi</h3><ul id="katalog"></ul>
+<h3>Košarica</h3><ul id="stavke"></ul>
+<p><b>Ukupno: <span id="ukupno">0.00</span> €</b></p>
+<button id="isprazni">Isprazni košaricu</button><button id="naruci">Potvrdi narudžbu</button>
+<p id="poruka"></p>
+<script>
+function Proizvod(naziv,cijena,kolicina){
+  this.naziv=naziv; this.cijena=cijena; this.kolicina=kolicina;
+  this.ukupnaCijena=function(){ return this.cijena*this.kolicina; };
+}
+const zaliha={ "Laptop":3, "Miš":10, "Tipkovnica":5, "Monitor":2 };
+const katalog=[["Laptop",800],["Miš",20],["Tipkovnica",45],["Monitor",150]];
+const kosarica={
+  proizvodi:[],
+  dodaj(naziv,cijena){
+    const postojeci=this.proizvodi.find(p=>p.naziv===naziv);
+    const trenutno=postojeci?postojeci.kolicina:0;
+    if(trenutno+1>zaliha[naziv]) return false; // ne više od zalihe
+    if(postojeci) postojeci.kolicina++; else this.proizvodi.push(new Proizvod(naziv,cijena,1));
+    return true;
+  },
+  ukloni(naziv){ this.proizvodi=this.proizvodi.filter(p=>p.naziv!==naziv); },
+  izracunajUkupno(){ return this.proizvodi.reduce((z,p)=>z+p.ukupnaCijena(),0); }
+};
+const stavke=document.getElementById("stavke"), poruka=document.getElementById("poruka");
+function prikaziKosaricu(){
+  stavke.innerHTML="";
+  kosarica.proizvodi.forEach(p=>{
+    const li=document.createElement("li");
+    li.textContent=`${p.naziv} × ${p.kolicina} = ${p.ukupnaCijena().toFixed(2)} € `;
+    const b=document.createElement("button"); b.textContent="Ukloni";
+    b.addEventListener("click",()=>{kosarica.ukloni(p.naziv);prikaziKosaricu();});
+    li.appendChild(b); stavke.appendChild(li);
+  });
+  document.getElementById("ukupno").textContent=kosarica.izracunajUkupno().toFixed(2);
+}
+katalog.forEach(([naziv,cijena])=>{
+  const li=document.createElement("li");
+  li.textContent=`${naziv} – ${cijena} € (zaliha: ${zaliha[naziv]}) `;
+  const b=document.createElement("button"); b.textContent="Dodaj";
+  b.addEventListener("click",()=>{
+    poruka.textContent = kosarica.dodaj(naziv,cijena) ? "" : "Nema dovoljno zalihe za "+naziv+".";
+    prikaziKosaricu();
+  });
+  li.appendChild(b); document.getElementById("katalog").appendChild(li);
+});
+document.getElementById("isprazni").addEventListener("click",()=>{kosarica.proizvodi=[];poruka.textContent="";prikaziKosaricu();});
+document.getElementById("naruci").addEventListener("click",()=>{
+  if(kosarica.proizvodi.length===0){ poruka.textContent="Košarica je prazna."; return; }
+  poruka.textContent="Obrada narudžbe...";
+  setTimeout(()=>{ poruka.textContent="Narudžba zaprimljena"; kosarica.proizvodi=[]; prikaziKosaricu(); },2000);
+});
+</script>
+</body></html>

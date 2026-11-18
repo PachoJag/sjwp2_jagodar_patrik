@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="hr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zadatak 1 – Brojač</title><style>body{font-family:sans-serif;max-width:640px;margin:30px auto;padding:0 16px}button{padding:6px 14px;margin:3px;cursor:pointer}input,select{padding:6px;margin:3px}.err{color:#c0392b}.ok{color:#27ae60}li{margin:4px 0}</style></head><body><h1>Brojač klikova</h1>
+<h2 id="broj">0</h2><p id="poruka" class="err"></p>
+<button id="plus">+</button><button id="minus">−</button><button id="reset">Reset</button>
+<script>
+let broj=0;
+const ispis=document.getElementById("broj"), poruka=document.getElementById("poruka");
+function osvjezi(){
+  ispis.textContent=broj;
+  poruka.textContent = broj<0 ? "Broj je negativan!" : "";
+}
+document.getElementById("plus").addEventListener("click",()=>{broj++;osvjezi();});
+document.getElementById("minus").addEventListener("click",()=>{broj--;osvjezi();});
+document.getElementById("reset").addEventListener("click",()=>{broj=0;osvjezi();});
+</script>
+</body></html>
