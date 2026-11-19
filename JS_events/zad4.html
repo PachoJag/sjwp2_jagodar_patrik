@@ -72,7 +72,8 @@
         info.textContent = "";
         polje.forEach((p) => {
           const li = document.createElement("li");
-          li.textContent = `${p.naziv} – ${p.cijena} € (${p.kategorija}), zaliha: ${p.stanjeZalihe}`;
+          li.textContent =
+            "${p.naziv} – ${p.cijena} € (${p.kategorija}), zaliha: ${p.stanjeZalihe}";
           lista.appendChild(li);
         });
       }
