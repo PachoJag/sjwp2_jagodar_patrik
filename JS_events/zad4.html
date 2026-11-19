@@ -1,70 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Zad 4</title>
     <style>
-    body
-    {
-        font-family:sans-serif;
-        max-width:640px;
-        margin:30px auto;
-        padding:0 16px
-    }
-    button
-    {
-        padding:6px 14px;
-        margin:3px;
-        cursor:pointer
-    }
-    input,select
-    {
-        padding:6px;
-        margin:3px
-    }
-    .err{color:#c0392b}
-    .ok{color:#27ae60}
-    li{margin:4px 0}
+      body {
+        font-family: sans-serif;
+        max-width: 640px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 6px 14px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      input,
+      select {
+        padding: 6px;
+        margin: 3px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      .ok {
+        color: #27ae60;
+      }
+      li {
+        margin: 4px 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Popis proizvoda</h1>
     <div id="gumbi"></div>
     <button id="skupi">Skuplji od 50 €</button>
     <button id="svi">Svi</button>
     <button id="nazivi">Prikaži nazive (map)</button>
-    <ul id="lista"></ul><p id="info"></p>
+    <ul id="lista"></ul>
+    <p id="info"></p>
+
     <script>
-        const proizvodi=[
-            {naziv:"Laptop",cijena:800,kategorija:"Elektronika",stanjeZalihe:5},
-            {naziv:"Miš",cijena:20,kategorija:"Elektronika",stanjeZalihe:40},
-            {naziv:"Majica",cijena:25,kategorija:"Odjeća",stanjeZalihe:60},
-            {naziv:"Jakna",cijena:120,kategorija:"Odjeća",stanjeZalihe:12},
-            {naziv:"Roman",cijena:15,kategorija:"Knjige",stanjeZalihe:30},
-            {naziv:"Enciklopedija",cijena:65,kategorija:"Knjige",stanjeZalihe:7}
-        ];
-        const lista=document.getElementById("lista"), info=document.getElementById("info");
-        function prikazi(polje){
-            lista.innerHTML=""; info.textContent="";
-            polje.forEach(p=>{
-                const li=document.createElement("li");
-                li.textContent=`${p.naziv} – ${p.cijena} € (${p.kategorija}), zaliha: ${p.stanjeZalihe}`;
-                lista.appendChild(li);
-            });
-        }
-        const kategorije=[...new Set(proizvodi.map(p=>p.kategorija))];
-        kategorije.forEach(k=>{
-            const g=document.createElement("button"); g.textContent=k;
-            g.addEventListener("click",()=>prikazi(proizvodi.filter(p=>p.kategorija===k)));
-            document.getElementById("gumbi").appendChild(g);
+      const proizvodi = [
+        {
+          naziv: "Laptop",
+          cijena: 800,
+          kategorija: "Elektronika",
+          stanjeZalihe: 5,
+        },
+        {
+          naziv: "Miš",
+          cijena: 20,
+          kategorija: "Elektronika",
+          stanjeZalihe: 40,
+        },
+        { naziv: "Majica", cijena: 25, kategorija: "Odjeća", stanjeZalihe: 60 },
+        { naziv: "Jakna", cijena: 120, kategorija: "Odjeća", stanjeZalihe: 12 },
+        { naziv: "Roman", cijena: 15, kategorija: "Knjige", stanjeZalihe: 30 },
+        {
+          naziv: "Enciklopedija",
+          cijena: 65,
+          kategorija: "Knjige",
+          stanjeZalihe: 7,
+        },
+      ];
+      const lista = document.getElementById("lista"),
+        info = document.getElementById("info");
+      function prikazi(polje) {
+        lista.innerHTML = "";
+        info.textContent = "";
+        polje.forEach((p) => {
+          const li = document.createElement("li");
+          li.textContent = `${p.naziv} – ${p.cijena} € (${p.kategorija}), zaliha: ${p.stanjeZalihe}`;
+          lista.appendChild(li);
         });
-        document.getElementById("skupi").addEventListener("click",()=>prikazi(proizvodi.filter(p=>p.cijena>50)));
-        document.getElementById("svi").addEventListener("click",()=>prikazi(proizvodi));
-        document.getElementById("nazivi").addEventListener("click",()=>{
-            const n=proizvodi.map(p=>p.naziv); lista.innerHTML=""; info.textContent="Nazivi: "+n.join(", ");
-        });
-        prikazi(proizvodi);
+      }
+      const kategorije = [...new Set(proizvodi.map((p) => p.kategorija))];
+      kategorije.forEach((k) => {
+        const g = document.createElement("button");
+        g.textContent = k;
+        g.addEventListener("click", () =>
+          prikazi(proizvodi.filter((p) => p.kategorija === k)),
+        );
+        document.getElementById("gumbi").appendChild(g);
+      });
+      document
+        .getElementById("skupi")
+        .addEventListener("click", () =>
+          prikazi(proizvodi.filter((p) => p.cijena > 50)),
+        );
+      document
+        .getElementById("svi")
+        .addEventListener("click", () => prikazi(proizvodi));
+      document.getElementById("nazivi").addEventListener("click", () => {
+        const n = proizvodi.map((p) => p.naziv);
+        lista.innerHTML = "";
+        info.textContent = "Nazivi: " + n.join(", ");
+      });
+      prikazi(proizvodi);
     </script>
-</body>
+  </body>
 </html>

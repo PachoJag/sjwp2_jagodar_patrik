@@ -1,11 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zadatak 7 – Pogodi broj</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 640px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 6px 14px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      input,
+      select {
+        padding: 6px;
+        margin: 3px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      .ok {
+        color: #27ae60;
+      }
+      li {
+        margin: 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pogodi broj (1–100)</h1>
+    <input id="pokusaj" type="number" min="1" max="100" />
+    <button id="provjeri">Provjeri</button><button id="nova">Nova igra</button>
+    <p id="poruka"></p>
+    <p>Pokušaji: <b id="brojac">0</b></p>
+
+    <script>
+      let tajni, pokusaji, kraj;
+      const polje = document.getElementById("pokusaj"),
+        poruka = document.getElementById("poruka"),
+        brojac = document.getElementById("brojac");
+      function novaIgra() {
+        tajni = Math.floor(Math.random() * 100) + 1;
+        pokusaji = 0;
+        kraj = false;
+        brojac.textContent = 0;
+        poruka.textContent = "Pogodi broj!";
+        polje.value = "";
+        polje.disabled = false;
+        document.getElementById("provjeri").disabled = false;
+        polje.focus();
+      }
+      function provjeri() {
+        if (kraj) return;
+        const p = Number(polje.value);
+        if (polje.value === "" || !Number.isInteger(p) || p < 1 || p > 100) {
+          poruka.textContent = "Unesi cijeli broj od 1 do 100.";
+          return;
+        }
+        pokusaji++;
+        brojac.textContent = pokusaji;
+        if (p === tajni) {
+          poruka.textContent = "Točno! Pogodio si u ${pokusaji} pokušaja.";
+          kraj = true;
+          polje.disabled = true;
+          document.getElementById("provjeri").disabled = true;
+        } else
+          poruka.textContent =
+            tajni > p
+              ? "Zamišljeni broj je VEĆI."
+              : "Zamišljeni broj je MANJI.";
+        polje.select();
+      }
+      document.getElementById("provjeri").addEventListener("click", provjeri);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") provjeri();
+      });
+      document.getElementById("nova").addEventListener("click", novaIgra);
+      novaIgra();
+    </script>
+  </body>
 </html>

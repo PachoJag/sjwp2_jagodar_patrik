@@ -1,11 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 640px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 6px 14px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      input,
+      select {
+        padding: 6px;
+        margin: 3px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      .ok {
+        color: #27ae60;
+      }
+      li {
+        margin: 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upravljanje tipkovnicom</h1>
+    <p>Strelice ili WASD. Klikni na stranicu ako ne reagira.</p>
+    <div
+      id="prostor"
+      style="
+        position: relative;
+        width: 400px;
+        height: 300px;
+        border: 3px solid #333;
+        background: #f4f4f4;
+      "
+    >
+      <div
+        id="igrac"
+        style="position: absolute; width: 30px; height: 30px"
+      ></div>
+    </div>
+    <button id="reset">Resetiraj</button>
+
+    <script>
+      const SIRINA = 400,
+        VISINA = 300,
+        VELICINA = 30;
+      const Igrac = {
+        x: 185,
+        y: 135,
+        brzina: 10,
+        boja: "royalblue",
+        pomakniLijevo() {
+          this.x = Math.max(0, this.x - this.brzina);
+        },
+        pomakniDesno() {
+          this.x = Math.min(SIRINA - VELICINA, this.x + this.brzina);
+        },
+        pomakniGore() {
+          this.y = Math.max(0, this.y - this.brzina);
+        },
+        pomakniDolje() {
+          this.y = Math.min(VISINA - VELICINA, this.y + this.brzina);
+        },
+        resetiraj() {
+          this.x = 185;
+          this.y = 135;
+        },
+      };
+      const el = document.getElementById("igrac");
+      function crtaj() {
+        el.style.left = Igrac.x + "px";
+        el.style.top = Igrac.y + "px";
+        el.style.background = Igrac.boja;
+      }
+      document.addEventListener("keydown", function (event) {
+        const k = event.key.toLowerCase();
+        if (k === "arrowleft" || k === "a") Igrac.pomakniLijevo();
+        else if (k === "arrowright" || k === "d") Igrac.pomakniDesno();
+        else if (k === "arrowup" || k === "w") Igrac.pomakniGore();
+        else if (k === "arrowdown" || k === "s") Igrac.pomakniDolje();
+        else return;
+        event.preventDefault();
+        crtaj();
+      });
+      document.getElementById("reset").addEventListener("click", () => {
+        Igrac.resetiraj();
+        crtaj();
+      });
+      crtaj();
+    </script>
+  </body>
 </html>

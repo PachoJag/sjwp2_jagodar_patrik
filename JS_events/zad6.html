@@ -1,77 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Zad 6</title>
     <style>
-    body
-    {
-        font-family:sans-serif;
-        max-width:640px;
-        margin:30px auto;
-        padding:0 16px
-    }
-    button
-    {
-        padding:6px 14px;
-        margin:3px;
-        cursor:pointer
-    }
-    input,select
-    {
-        padding:6px;
-        margin:3px
-    }
-    .err{color:#c0392b}
-    .ok{color:#27ae60}
-    li{margin:4px 0}
+      body {
+        font-family: sans-serif;
+        max-width: 640px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 6px 14px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      input,
+      select {
+        padding: 6px;
+        margin: 3px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      .ok {
+        color: #27ae60;
+      }
+      li {
+        margin: 4px 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Evidencija učenika</h1>
     <ul id="lista"></ul>
     <select id="odabir"></select>
-    <input id="ocjena" type="number" placeholder="Ocjena 1–5">
+    <input id="ocjena" type="number" placeholder="Ocjena 1–5" />
     <button id="dodaj">Dodaj ocjenu</button>
     <p id="poruka" class="err"></p>
+
     <script>
-    function Ucenik(ime,prezime,razred,ocjene){
-        this.ime=ime; this.prezime=prezime; this.razred=razred; this.ocjene=ocjene;
-        this.izracunajProsjek=function(){
-            if(this.ocjene.length===0) return 0;
-            return this.ocjene.reduce((z,o)=>z+o,0)/this.ocjene.length;
+      function Ucenik(ime, prezime, razred, ocjene) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.razred = razred;
+        this.ocjene = ocjene;
+        this.izracunajProsjek = function () {
+          if (this.ocjene.length === 0) return 0;
+          return this.ocjene.reduce((z, o) => z + o, 0) / this.ocjene.length;
         };
-        this.dodajOcjenu=function(ocjena){
-            if(!Number.isInteger(ocjena)||ocjena<1||ocjena>5) return false;
-            this.ocjene.push(ocjena); return true;
+        this.dodajOcjenu = function (ocjena) {
+          if (!Number.isInteger(ocjena) || ocjena < 1 || ocjena > 5)
+            return false;
+          this.ocjene.push(ocjena);
+          return true;
         };
-        this.prikaziPodatke=function(){
-            return `${this.ime} ${this.prezime} (${this.razred}) – ocjene: ${this.ocjene.join(", ")} – prosjek: ${this.izracunajProsjek().toFixed(2)}`;
+        this.prikaziPodatke = function () {
+          return `${this.ime} ${this.prezime} (${this.razred}) – ocjene: ${this.ocjene.join(", ")} – prosjek: ${this.izracunajProsjek().toFixed(2)}`;
         };
-    }
-    const ucenici=[
-        new Ucenik("Luka","Horvat","4.a",[4,5,3]),
-        new Ucenik("Mia","Kovač","3.b",[5,5,4]),
-        new Ucenik("Ivan","Babić","2.c",[3,2,4])
-    ];
-    const lista=document.getElementById("lista"), odabir=document.getElementById("odabir");
-    function prikazi(){
-        lista.innerHTML="";
-        ucenici.forEach(u=>{const li=document.createElement("li");li.textContent=u.prikaziPodatke();lista.appendChild(li);});
-    }
-    ucenici.forEach((u,i)=>{
-        const o=document.createElement("option");
-        o.value=i;
-        o.textContent=u.ime+" "+u.prezime;
-        odabir.appendChild(o);});
-    document.getElementById("dodaj").addEventListener("click",()=>{
-        const u=ucenici[odabir.value], o=Number(document.getElementById("ocjena").value);
-        const poruka=document.getElementById("poruka");
-        if(u.dodajOcjenu(o)){ poruka.textContent=""; prikazi(); }
-        else poruka.textContent="Ocjena mora biti cijeli broj od 1 do 5.";
-    });
-    prikazi();
+      }
+      const ucenici = [
+        new Ucenik("Luka", "Horvat", "4.a", [4, 5, 3]),
+        new Ucenik("Mia", "Kovač", "3.b", [5, 5, 4]),
+        new Ucenik("Ivan", "Babić", "2.c", [3, 2, 4]),
+      ];
+      const lista = document.getElementById("lista"),
+        odabir = document.getElementById("odabir");
+      function prikazi() {
+        lista.innerHTML = "";
+        ucenici.forEach((u) => {
+          const li = document.createElement("li");
+          li.textContent = u.prikaziPodatke();
+          lista.appendChild(li);
+        });
+      }
+      ucenici.forEach((u, i) => {
+        const o = document.createElement("option");
+        o.value = i;
+        o.textContent = u.ime + " " + u.prezime;
+        odabir.appendChild(o);
+      });
+      document.getElementById("dodaj").addEventListener("click", () => {
+        const u = ucenici[odabir.value],
+          o = Number(document.getElementById("ocjena").value);
+        const poruka = document.getElementById("poruka");
+        if (u.dodajOcjenu(o)) {
+          poruka.textContent = "";
+          prikazi();
+        } else poruka.textContent = "Ocjena mora biti cijeli broj od 1 do 5.";
+      });
+      prikazi();
     </script>
-</body>
+  </body>
 </html>

@@ -1,75 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Document</title>
     <style>
-        body
-        {
-            font-family:sans-serif;
-            max-width:640px;
-            margin:30px auto;
-            padding:0 16px
-        }
-        button
-        {
-            padding:6px 14px;
-            margin:3px;
-            cursor:pointer
-        }
-        input,select
-        {
-            padding:6px;
-            margin:3px
-        }
-        .err{color:#c0392b}
-        .ok{color:#27ae60}
-        li{margin:4px 0}
+      body {
+        font-family: sans-serif;
+        max-width: 640px;
+        margin: 30px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 6px 14px;
+        margin: 3px;
+        cursor: pointer;
+      }
+      input,
+      select {
+        padding: 6px;
+        margin: 3px;
+      }
+      .err {
+        color: #c0392b;
+      }
+      .ok {
+        color: #27ae60;
+      }
+      li {
+        margin: 4px 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Kalkulator</h1>
-    <input id="a" type="text" placeholder="Broj a">
+    <input id="a" type="text" placeholder="Broj a" />
     <select id="op">
-        <option value="zbroji">+</option>
-        <option value="oduzmi">-</option>
-        <option value="pomnozi">*</option>
-        <option value="podijeli">/</option>
+      <option value="zbroji">+</option>
+      <option value="oduzmi">-</option>
+      <option value="pomnozi">*</option>
+      <option value="podijeli">/</option>
     </select>
-    <input id="b" type="text" placeholder="Broj b">
+    <input id="b" type="text" placeholder="Broj b" />
     <button id="racunaj">Izračunaj</button>
     <h2 id="rez"></h2>
+
     <script>
-        function zbroji(a,b){return a+b;}
-        function oduzmi(a,b){return a-b;}
-        function pomnozi(a,b){return a*b;}
-        function podijeli(a,b){
-            if(b===0) throw new Error("Dijeljenje s nulom nije moguće.");
-            return a/b;
+      function zbroji(a, b) {
+        return a + b;
+      }
+      function oduzmi(a, b) {
+        return a - b;
+      }
+      function pomnozi(a, b) {
+        return a * b;
+      }
+      function podijeli(a, b) {
+        if (b === 0) throw new Error("Dijeljenje s nulom nije moguće.");
+        return a / b;
+      }
+      function izvrsi(a, b, operacija) {
+        return operacija(a, b);
+      }
+      const operacije = { zbroji, oduzmi, pomnozi, podijeli }; // reference, bez zagrada
+      const rez = document.getElementById("rez");
+      function izracunaj() {
+        const sa = document.getElementById("a").value.trim().replace(",", ".");
+        const sb = document.getElementById("b").value.trim().replace(",", ".");
+        const a = Number(sa),
+          b = Number(sb);
+        rez.className = "err";
+        if (sa === "" || sb === "" || isNaN(a) || isNaN(b)) {
+          rez.textContent = "Unesi ispravne brojeve.";
+          return;
         }
-        function izvrsi(a,b,operacija)
-        {
-            return operacija(a,b);
+        try {
+          const r = izvrsi(
+            a,
+            b,
+            operacije[document.getElementById("op").value],
+          );
+          rez.className = "ok";
+          rez.textContent = "Rezultat: " + r;
+        } catch (e) {
+          rez.textContent = e.message;
         }
-        const operacije={zbroji,oduzmi,pomnozi,podijeli}; // reference, bez zagrada
-        const rez=document.getElementById("rez");
-        function izracunaj(){
-            const sa=document.getElementById("a").value.trim().replace(",",".");
-            const sb=document.getElementById("b").value.trim().replace(",",".");
-            const a=Number(sa), b=Number(sb);
-            rez.className="err";
-            if(sa===""||sb===""||isNaN(a)||isNaN(b)){ rez.textContent="Unesi ispravne brojeve."; return; }
-            try{
-                const r=izvrsi(a,b,operacije[document.getElementById("op").value]);
-                rez.className="ok"; rez.textContent="Rezultat: "+ r;
-            }
-            catch(e)
-            {
-                rez.textContent=e.message;
-            }
-        }
-        document.getElementById("racunaj").addEventListener("click",izracunaj);
+      }
+      document.getElementById("racunaj").addEventListener("click", izracunaj);
     </script>
-</body>
+  </body>
 </html>
